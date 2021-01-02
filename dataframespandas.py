@@ -65,4 +65,67 @@ df.iloc[0]
 
 #Selecting sub-sets of rows and columns
 df.loc['B', 'Y'] #Retrieves specific index
-df.loc[['A', 'B']['W', 'Y']] #Returns a sub-set of the dataframe
+df.loc[['A', 'B'],['W', 'Y']] #Returns a sub-set of the dataframe
+
+##Conditional Selection and multi-index parts of Dataframe
+
+#Re-creation of a simple excel sheet
+df = pd.DataFrame(randn(5,4), ['A','B','C','D','E'], ['W','X','Y','Z'])
+
+#Retrieving table that is greater than 0
+df > 0
+#Visual Representation
+'''
+       W      X      Y      Z
+A   True   True  False  False
+B  False   True   True   True
+C   True   True   True   True
+D  False  False  False   True
+E  False   True   True   True
+'''
+
+#Retrieving table values that is greater than 0
+df[df>0] #Returns all number values that meets the criteria, otherwise returns NaN.
+#Visual Representation
+'''
+          W         X         Y         Z
+A  0.302665  1.693723       NaN       NaN
+B       NaN  0.390528  0.166905  0.184502
+C  0.807706  0.072960  0.638787  0.329646
+D       NaN       NaN       NaN  0.484752
+E       NaN  1.901755  0.238127  1.996652
+'''
+
+#Asserting specific column value if each index is great than 0
+[df['W'] > 0] #Note: Returns a Series value
+
+#List table row values if first column index is greater than 0
+df[df['W']> 0]
+#Visual Representation
+'''
+          W         X         Y         Z
+A  0.302665  1.693723 -1.706086 -1.159119
+C  0.807706  0.072960  0.638787  0.329646
+'''
+
+#Multiple Condition
+df[(df['W'] > 0) & (df['Y']>1)]
+
+#Resetting index
+df.reset_index()
+#Visual Representation
+'''
+  index         W         X         Y         Z
+0     A  0.302665  1.693723 -1.706086 -1.159119
+1     B -0.134841  0.390528  0.166905  0.184502
+2     C  0.807706  0.072960  0.638787  0.329646
+3     D -0.497104 -0.754070 -0.943406  0.484752
+4     E -0.116773  1.901755  0.238127  1.996652
+'''
+
+#Creation of a new index
+newindex = 'JU ST AH RA CO'.split()
+df['States'] = newindex
+
+#Assiging a new index
+df.set_index('States') #Overwrites existing index
