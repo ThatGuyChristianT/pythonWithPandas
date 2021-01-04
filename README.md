@@ -1,5 +1,5 @@
 # pythonWithPandas
-
+Pandas is an open-source library built on top of NumPy that can work with data from a wide viriety-of-sources. 
 ## Series
 Brief introduction of setting data of a Series using an Array, List, and a Dictionary.
 
