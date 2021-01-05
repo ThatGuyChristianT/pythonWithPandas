@@ -4,12 +4,12 @@ import pandas as pd
 
 from numpy.random import randn
 
-#Seed makes sure you're getting random numbers between 0~100
 np.random.seed(101)
 
 #Creation of a simple excel sheet
-df = pd.DataFrame(randn(5,4), ['A','B','C','D','E'], ['W','X','Y','Z']) #First parameter is how many rows and columns.
-                                                                        #Second parameter are row identifier(s) while the last are for the column.
+df = pd.DataFrame(randn(5,4), ['A','B','C','D','E'], ['W','X','Y','Z']) #First parameter are randomly generated data of 5 rows and 4 columns.
+                                                                        #Second parameter is set of row(s) index identifiers
+                                                                        #Third parameter is set of column(s) header.
 #For visualization purpose:
 ''' 
           W         X         Y         Z
